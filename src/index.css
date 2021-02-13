@@ -12,6 +12,26 @@ header {
 	background-color: #373b69;
 	padding: 1rem;
 	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+
+.search{
+	
+	font-family: inherit;
+	font-size: 1.3rem;
+	border: 2px solid #22254b;
+	border-radius: 50px;
+	background-color: transparent;
+	color: white;
+	padding: 0.5rem 1.5rem;
+	margin-top: 12px;
+  
+}
+  
+.search:focus{
+	outline: none;
 }
 
 body {
@@ -30,30 +50,17 @@ body {
 	overflow: hidden;
 	position: relative;
 }
-.search{
-  font-family: inherit;
-  font-size: 1.3rem;
-  border: 2px solid #22254b;
-  border-radius: 50px;
-  background-color: transparent;
-  color: white;
-  padding: 0.5rem 1.5rem;
 
-}
-
-.search:focus{
-  outline: none;
+.movie-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .movie img {
 	width: 100%;
 	height: 400px;
 	object-fit: cover;
-}
-.movie-container {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
 }
 .movie-info {
 	display: flex;
@@ -92,10 +99,10 @@ body {
 	font-size: bold;
   }
   .movie-info .green{
-	color:green;
+	color:rgb(109,247,109);
   }
   .movie-info .orange{
-	color:rgb(192, 105, 23);
+	color:rgb(255, 169, 8);
   }
   .movie-info .red{
 	color:red;

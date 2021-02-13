@@ -4,7 +4,7 @@ import Movie from "./Movie";
 
 const App = ()=>{
   //quiero renderizar inicialmente en el home las peliculas mas populares con FEATURED_API
-	const FEATURED_API =
+	const HOME_API =
 		"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
 
 	const SEARCH_API =
@@ -15,8 +15,8 @@ const App = ()=>{
   //de acuerdo al useEffect
 	const [searchMovie, setSearchMovie] = useState("");
 
-	const getMovies = () => {
-		fetch(FEATURED_API)
+	const getMovies = (API_GENERICA) => {
+		fetch(API_GENERICA)
 			.then( res => res.json())
 			.then( data  => {
 				console.log(data);
@@ -25,7 +25,7 @@ const App = ()=>{
 	};
 
 	useEffect(() => {
-		(searchMovie)? getMovies(SEARCH_API + searchMovie ):getMovies(FEATURED_API);
+		getMovies(HOME_API);
 	}, []);
 
 	const handleInput = (e) => {
