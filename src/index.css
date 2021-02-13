@@ -44,25 +44,6 @@ body {
 .search:focus{
   outline: none;
 }
-/*tags estilos */
-.tag{
-  background-color: #2e3158;
-  padding: 0.5rem;
-  border-radius: 5px;
-  font-size: bold;
-}
-.movie-info .green{
-  color:green;
-}
-.movie-info .orange{
-  color:rgb(192, 105, 23);
-}
-.movie-info .red{
-  color:red;
-}
-
-
-
 
 .movie img {
 	width: 100%;
@@ -101,3 +82,20 @@ body {
 .movie:hover .movie-over {
 	transform: translateY(0%);
 }
+
+/*tags estilos */
+.tag{
+	background-color: #2e3158;
+	padding: 0.5rem;
+	border-radius: 5px;
+	font-size: bold;
+  }
+  .movie-info .green{
+	color:green;
+  }
+  .movie-info .orange{
+	color:rgb(192, 105, 23);
+  }
+  .movie-info .red{
+	color:red;
+  }
