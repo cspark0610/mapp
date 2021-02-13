@@ -25,7 +25,7 @@ const App = ()=>{
 	};
 
 	useEffect(() => {
-		getMovies(FEATURED_API);
+		(searchMovie)? getMovies(SEARCH_API + searchMovie ):getMovies(FEATURED_API);
 	}, []);
 
 	const handleInput = (e) => {
@@ -46,6 +46,8 @@ const App = ()=>{
 	return (
 		<>
 			<header className='header'>
+				<h2 className="title">OMBD</h2>
+
 				<form onSubmit={handleSubmit}>
 				<input
 					className='search'

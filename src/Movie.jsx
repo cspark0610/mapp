@@ -7,7 +7,7 @@ const Movie = ({ title, poster_path, overview, vote_average }) => (
 		<img src={poster_path ? IMG_API + poster_path : URL} alt={title} />
 		<div className='movie-info'>
 			<h3>{title}</h3>
-			<span className={`${setVoteClass(vote_average)}`}>{vote_average}</span>
+			<span id ="tag" className={`${setVoteClass(vote_average)}`}>{vote_average}</span>
 		</div>
 
 		<div className='movie-over'>
