@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import Movie from "./Movie";
+ 
 
 const App = ()=>{
   //quiero renderizar inicialmente en el home las peliculas mas populares con FEATURED_API
 	const HOME_API =
-		`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.MAPP_API_KEY}&page=1`;
+		`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_MAPP}&page=1`;
 
 	const SEARCH_API =
-		`https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.MAPP_API_KEY}&query=`;
+		`https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.REACT_APP_MAPP}&query=`;
 
+
+	console.log(HOME_API);
+	
 	const [movies, setMovies] = useState([]);
   //movies es un array con estado inicial [] que luego sera rellenado 
   //de acuerdo al useEffect
