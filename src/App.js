@@ -5,10 +5,10 @@ import Movie from "./Movie";
 const App = ()=>{
   //quiero renderizar inicialmente en el home las peliculas mas populares con FEATURED_API
 	const HOME_API =
-		"https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=04c35731a5ee918f014970082a0088b1&page=1";
+		`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.MAPP_API_KEY}&page=1`;
 
 	const SEARCH_API =
-		"https://api.themoviedb.org/3/discover/movie?&api_key=04c35731a5ee918f014970082a0088b1&query=";
+		`https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.MAPP_API_KEY}&query=`;
 
 	const [movies, setMovies] = useState([]);
   //movies es un array con estado inicial [] que luego sera rellenado 
