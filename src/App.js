@@ -9,10 +9,9 @@ const App = ()=>{
 		`https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=${process.env.REACT_APP_MAPP}&page=1`;
 
 	const SEARCH_API =
-		`https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.REACT_APP_MAPP}&query=`;
+		`https://api.themoviedb.org/3/discover/movie?&api_key=${process.env.REACT_APP_MAPP}&query=`
 
 
-	console.log(HOME_API);
 	
 	const [movies, setMovies] = useState([]);
   //movies es un array con estado inicial [] que luego sera rellenado 
@@ -23,30 +22,31 @@ const App = ()=>{
 		fetch(API_GENERICA)
 			.then( res => res.json())
 			.then( data  => {
-				console.log(data);
+				//console.log(data);
 				setMovies(data.results);
 			});
 	};
 
 	useEffect(() => {
-		getMovies(HOME_API);
+		getMovies(HOME_API)
 	}, []);
-
-	const handleInput = (e) => {
-    //https://reactgo.com/react-get-input-value/
-		setSearchMovie(e.target.value);
-	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (searchMovie) {
+		
 			getMovies(SEARCH_API + searchMovie);
-      //si el usuario apreta enter y hace la busqueda 
-      //seteo la var searchMovie a ""
 			setSearchMovie("");
 		}
+		console.log(SEARCH_API+searchMovie);
 	};
 
+
+	const handleOnChange = (e) => {
+		//https://reactgo.com/react-get-input-value/
+			setSearchMovie(e.target.value);
+	};
+	
 	return (
 		<>
 			<header className='header'>
@@ -58,14 +58,14 @@ const App = ()=>{
 					type='search'
 					placeholder='Search...'
 					value={searchMovie}
-					onChange={handleInput}
+					onChange={handleOnChange}
 				/>
         </form>
 			</header>
 
-      <div className='movie-container'>
+     	<div className='movie-container'>
 			{movies.length > 0 && movies.map((movie) => <Movie key={movie.id} {...movie} />)}
-			</div>
+		</div>
 		</>
 	);
 }
