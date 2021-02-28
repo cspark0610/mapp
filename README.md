@@ -3,4 +3,5 @@ A MOVIE APP USING TMDB API
 -js Fetch
 -useState
 -useEffect
-
+-useContext 
+-https://developers.themoviedb.org/3/getting-started/search-and-query-for-details
