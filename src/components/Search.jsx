@@ -27,7 +27,7 @@ export const Search = () => {
 
   return (
     <>
-        <form>
+        <div className="search-container">
         <input
             className='search'
             type='search'
@@ -35,7 +35,7 @@ export const Search = () => {
             value={query}
             onChange={onChange}
         />
-        </form>
+        </div>
    
     <div className='movie-container'>
     {results.length > 0 && results.map((movie) => <Movie key={movie.id} movie={movie} />)}

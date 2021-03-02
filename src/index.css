@@ -8,6 +8,7 @@ root {
 	flex-direction: column;
 	justify-content: flex-end;
 }
+/*
 header {
 	background-color: black;
 	padding: 1rem;
@@ -17,20 +18,29 @@ header {
 	font-family: 'Poppins';
 	font-size: 1.5rem;
 	
+}
+*/
+.container{
+	display:flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 20px;
+	margin-left: 0;
+	margin-right: 0;
+	font-size: 1.2rem;
 	
 }
-.favorites{
-	margin-top: 20px;
-	font-size: 1.5rem;
-	
+.search-container{
+	display:flex;
+	justify-content: right;
+	flex-direction: row-reverse;
 }
 
 .search{
-	
-	font-family: inherit;
+	font-family: 'Poppins';
 	font-size: 1.3rem;
 	border: 2px solid whitesmoke;
-	border-radius: 40px;
+	border-radius: 30px;
 	background-color: transparent;
 	color: white;
 	padding: 0.5rem 1.5rem;
