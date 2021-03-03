@@ -39,7 +39,7 @@ export const Register  = () => {
                 <section className='col-12 col-sm-6 col-md-3'>
                 <form className='form-container' onSubmit={(e)=>handleSubmit(e)}>
                     <div className="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
+                        <label htmlFor="exampleInputEmail1">Email address</label>
                         <input type="email" 
                         className="form-control" 
                         id="exampleInputEmail1" 
@@ -49,7 +49,7 @@ export const Register  = () => {
                         />
                     </div>
                     <div className="form-group">
-                        <label for="exampleInputPassword1">Password</label>
+                        <label htmlFor="exampleInputPassword1">Password</label>
                         <input type="password" 
                         className="form-control" 
                         id="exampleInputPassword1" 

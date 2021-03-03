@@ -18,10 +18,8 @@ app.use(cors());
 app.use(helmet());
 app.use(session({ secret: "bootcamp" }))
 
-// rutas para users con las rutas de auth
-const routerUsers = require("./routes/index");
-const routerFavorites = require("./routes/favorites");
-
+// rutas 
+const routes = require("./routes/index");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -70,11 +68,9 @@ passport.deserializeUser(function (id, done) {
 });
 
 // Express Routing
-app.use("/api/", routerUsers);
-app.use("/api/favorites", routerFavorites);
+app.use("/api/", routes);
 
-
-
+//sync
 db.sync({ force: false }).then(() => {
   http.createServer(app).listen(config.port, () => {
     console.log(`Server listening at port ${config.port}`);

@@ -5,22 +5,12 @@ import { log, success, error } from "./utils/logs";
 import axios from 'axios';
 
 export const Navbar = () => {
-    const {login ,logout } = useContext(UserContext);
+    const {user, login ,logout } = useContext(UserContext);
+    
+
     const history = useHistory();
 
-  //   const [user, setUser] = useState([])
-  //   const getUserById =async(id)=>{
-  //       try{
-  //           const res = await axios.get(`http://localhost:8080/api/users/${id}`);
-  //           console.log(res.data);
-  //           setUser(res.data);
-  //       }catch(err){
-  //           console.error(err)
-  //       }
-  //   };
-  //   useEffect(()=>{
-  //     getUserById();
-  // },[])
+    console.log(typeof user);
 
     const handleLogout = async () => {
       log("logout attempt...");
@@ -33,15 +23,15 @@ export const Navbar = () => {
         error(console.error(err));
       }
     };
-
-   
-
+    
+  
     return ( 
         <nav className= "navbar navbar-dark bg-dark">
           <div className='container'>
-            <span className='navbar-brand'><h4>{"Welcome to OMDB"}</h4></span>
-            <Link to="/favorites">MOVIE LIST</Link>
-            <Link to="/users">VIEW USERS</Link>
+          <Link to="/login" style={{color:'white'}}><span className='navbar-brand'>
+            <h4> Welcome to OMDB</h4></span></Link> 
+            <Link to="/favorites" style={{color:'white'}}><span className='navbar-brand'>MOVIE LIST</span></Link>
+            <Link to="/users" style={{color:'white'}}><span className='navbar-brand'>VIEW USERS</span></Link>
           </div>
          
           <button className="btn btn-primary"><Link to='/register' style={{color:'white'}}>Register</Link></button>

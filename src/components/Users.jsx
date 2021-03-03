@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link, useParams } from 'react-router-dom';
 
 import axios from 'axios';
 
 //import React from 'react'
 
 export const Users = () => {
+    const {id} = useParams('/:id')
+    console.log( id );
 
     const [users, setUsers] = useState([])
     const getUsers =async()=>{
@@ -44,7 +47,7 @@ export const Users = () => {
                 { users.map(user =>(
                 <tr key={user.id}>
                     <td>{user.id}</td>
-                    <td>{user.email}</td>
+                    <td><Link to='/users/1' style={{color:'white'}}>{user.email}</Link></td>
                     <td><button className="btn btn-danger" onClick={()=>deleteUser(user.id)}>
                         Delete</button>
                     </td>

@@ -1,38 +1,31 @@
 
 import { MovieContext } from "../context/MovieContext";
+import { UserContext } from "../context/UserContext";
 import React ,{useContext, useEffect, useState} from 'react';
 import axios from 'axios';
 
 
 export const Favorites = () => {
-    const { movies } = useContext(MovieContext)
+    const { movies, cancelMovie } = useContext(MovieContext)
+    const { user } = useContext(UserContext)
+    
     console.log(movies);
     const [favorites, setFavorites] = useState([]);
 
-	const postFavorites =async( )=>{
+    //
+	const postFavorites =async( id ,title, user)=>{
+        //console.log(id , title);
+        //console.log(user);
         try{
-            const res = await axios.post("http://localhost:8080/api/favorites",{movieId:movies.id, title:movies.title});
+            const res = await axios.post("http://localhost:8080/api/favorites",{movieId: id, title: title, user:user});
             res.data.json
 			setFavorites(res.data);
         }catch(err){
             console.error(err)
         }
     }
-    const deleteFavorite =async(id)=>{
-        try{
-            const res = await axios.delete(`http://localhost:8080/api/favorites/${id}`);
-            //console.log(res.data);
-            setFavorites(res.data);
-        }catch(err){
-            console.error(err)
-        }
-    };
-
-	// useEffect({
-	// 	postFavorites()
-	// },[])
+    
 	
-
 	return (
 		<>
         	<table className='table table-dark mt-5 text-center'>
@@ -41,23 +34,27 @@ export const Favorites = () => {
 						<th className='text-center'>Favorite Movie Id</th>
 						<th className='text-center'>Favorite Movie Title</th>
 						<th className='text-center'>Add To Favorites</th>
-						<th className='text-center'>Delete Movie</th>
+						<th className='text-center'>Cancel Movie</th>
+						
 					</tr>
 				</thead>
 				<tbody>
-                {/* aca voy a mapear el array de favorites que me venga por el useContext*/}
-                { movies.map(movie =>(
+                {/* aca voy a mapear el array de movies que me venga por el useContext*/}
+                { movies.map(movie =>{
+                    //console.log(movie.id);
+                    return(
                 <tr key={movie.id}>
                     <td>{movie.id}</td>
                     <td>{movie.title}</td>
-					<td><button className="btn btn-success" onClick={( )=>postFavorites( )}>
+					<td><button className="btn btn-success" onClick={( )=>postFavorites(movie.id,movie.title,user )}>
                         Add Favorite</button>
                     </td>
-                    <td><button className="btn btn-danger" onClick={()=>deleteFavorite(movie.id)}>
-                        Delete Favorite</button>
+                    <td><button className="btn btn-danger" onClick={()=>cancelMovie(movie.id)}>
+                        Cancel Movie</button>
                     </td>
                 </tr> 
-                )) }
+                )}
+                )}
 				
 				</tbody>
 			</table>

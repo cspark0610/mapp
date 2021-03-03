@@ -4,7 +4,7 @@ import MovieReducer from "./MovieReducer";
 //https://medium.com/analytics-vidhya/crud-with-react-hooks-a5b186b4732
 //https://reactjs.org/docs/context.html?
 
-// initial state , es el array de favorites
+// initial state , es el array de movieList
 const initialState = {
   movies: localStorage.getItem("movies")
     ? JSON.parse(localStorage.getItem("movies"))
@@ -29,9 +29,9 @@ export const MovieProvider = (props) => {
   const addMovie = (movie) => {
     dispatch({ type: "ADD_MOVIE", payload: movie });
   };
-  // desde el componente Favorites voy a usar esta accion delete
-  const deleteMovieFromFavorites = (id) => {
-    dispatch({ type: "DELETE_MOVIE_FROM_FAVORITES", payload: id });
+  // para cancelar el agregado de un movie a la movieList
+  const cancelMovie= (id) => {
+    dispatch({ type: "CANCEL_MOVIE", payload: id });
   };
 
 
@@ -40,7 +40,7 @@ export const MovieProvider = (props) => {
       value={{
         movies: state.movies,
         addMovie,
-        deleteMovieFromFavorites,
+        cancelMovie,
       }}
     >
       {props.children}

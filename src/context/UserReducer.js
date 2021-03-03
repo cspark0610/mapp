@@ -1,4 +1,5 @@
 export default (state, action) => {
+	//const {payload} = action
 	const newAction = action.payload
 	switch (action.type) {
 		case "LOGIN":

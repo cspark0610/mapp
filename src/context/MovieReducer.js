@@ -5,7 +5,7 @@ export default (state, action) => {
 				...state,
 				movies: [...state.movies, action.payload],
 			};
-		case "DELETE_MOVIE_FROM_FAVORITES":
+		case "CANCEL_MOVIE":
 			return {
 				...state,
 				movies: state.movies.filter((movie) => movie.id !== action.payload),

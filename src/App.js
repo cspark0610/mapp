@@ -5,6 +5,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 import { Favorites } from "./components/Favorites";
 import { Users } from "./components/Users";
+import { UserFavorites } from "./components/UserFavorites";
 import { MovieProvider } from './context/MovieContext'
 import { UserProvider } from './context/UserContext'
 
@@ -16,21 +17,22 @@ import "./index.css";
 
 function App() {
   return (
-  <UserProvider>
-   <MovieProvider>
+   <UserProvider>
+    <MovieProvider>
       <Router>
         <Navbar />
         <Switch>
-          <Route exact path ='/register'> <Register/></Route>
-          <Route exact path ='/login'> <Login/></Route>
-          <Route exact path ='/search'> <Search/></Route>
+          <Route path ='/register'> <Register/></Route>
+          <Route path ='/login'> <Login/></Route>
+          <Route path ='/search'> <Search/></Route>
           <Route path="/favorites"><Favorites /></Route>
           <Route path="/users"><Users /></Route>
-          {/* <Redirect to="/" /> */}
+          <Route path="/users/:id"><UserFavorites /></Route>
+          <Redirect from ="/" to="/login" /> 
         </Switch>
       </Router>
   </MovieProvider>
-  </UserProvider>
+ </UserProvider>
   );
 }
 
