@@ -4,6 +4,10 @@ A MOVIE APP USING TMDB API
 -useState
 -useEffect
 -useContext 
+-css
+-bootstrap
+-server runs on port 8080 npm run server
+-front runs on port 3000 npm start
 -https://developers.themoviedb.org/3/getting-started/search-and-query-for-details
 
 

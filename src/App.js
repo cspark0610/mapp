@@ -22,9 +22,9 @@ function App() {
       <Router>
         <Navbar />
         <Switch>
-          <Route path ='/register'> <Register/></Route>
-          <Route path ='/login'> <Login/></Route>
-          <Route path ='/search'> <Search/></Route>
+          <Route path ="/register"> <Register/></Route>
+          <Route path ="/login"> <Login/></Route>
+          <Route path ="/search"> <Search/></Route>
           <Route path="/favorites"><Favorites /></Route>
           <Route path="/users"><Users /></Route>
           <Route path="/users/:id"><UserFavorites /></Route>

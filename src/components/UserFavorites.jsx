@@ -44,10 +44,10 @@ useEffect(()=>{
 				</thead>
 				<tbody>
                 {/* aca voy a mapear el array de favorites que me venga por axiosGet*/}
-                { movies.map(movie =>(
-                <tr key={movie.id}>
-                    <td>{movie.id}</td>
-                    <td>{movie.title}</td>
+                { favorites.map(favorite =>(
+                <tr key={favorite.id}>
+                    <td>{favorite.id}</td>
+                    <td>{favorite.title}</td>
                     <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(movie.id, user)}>
                         Delete Favorite</button>
                     </td>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Movie from './Movie';
 
 export const Search = () => {
@@ -28,6 +29,12 @@ export const Search = () => {
   return (
     <>
         <div className="search-container">
+        <Link to='/favorites' style={{ color: "white" }}>
+					<span className='navbar-brand'>MOVIE LIST</span>
+				</Link>
+				<Link to='/users' style={{ color: "white" }}>
+					<span className='navbar-brand'>VIEW USERS</span>
+				</Link>
         <input
             className='search'
             type='search'

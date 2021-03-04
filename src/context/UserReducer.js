@@ -11,6 +11,12 @@ export default (state, action) => {
 			return {
 				...state,
 				user: { }
+			};
+		};
+		case "GET_USER_BY_ID":{
+			return {
+				...state,
+				user: newAction
 			}
 		}	
 		default:

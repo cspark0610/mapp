@@ -21,7 +21,7 @@ root {
 }
 .search-container{
 	display:flex;
-	justify-content: right;
+	justify-content: space-between;
 	flex-direction: row-reverse;
 }
 

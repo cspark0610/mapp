@@ -14,13 +14,17 @@ routerUsers.get('/',(req,res)=>{
 });
 
 
-routerUsers.get('/:id',(req,res)=>{
-  User.findByPk(req.params.id)
-  .then(user =>{
-     res.json(user)
-  })
-  .catch(err => console.log(err))
-})
+routerUsers.get('/:id',async(req,res)=>{
+  const {id} = req.params
+  try{
+    const userById = await User.findByPk(req.params.id);
+    const favoritesByUser = await userById.getFavorites(userById);
+
+    res.send(favoritesByUser)
+  }catch(err){
+    console.error(err)
+  }
+});
 
 
 routerUsers.delete('/:id',async(req,res)=>{
@@ -32,6 +36,6 @@ routerUsers.delete('/:id',async(req,res)=>{
     console.error(err)
   }
  
-})
+});
 
 module.exports = routerUsers;

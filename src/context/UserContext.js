@@ -6,7 +6,7 @@ import UserReducer from "./UserReducer";
 const initialUsers = {
     user: localStorage.getItem("user") !=='undefined'? JSON.parse(localStorage.getItem("user")) : {},
    
-    };
+};
 
 // initialUser , es el array de users adentro de este objeto
 export const UserContext = createContext(initialUsers);
@@ -30,6 +30,15 @@ export const UserProvider = ( props )=>{
         dispatch({type :"LOGOUT"})
        
     };
+    const getUserById = async(id)=>{
+        try{
+            const res= await axios.get(`http://localhost:8080/users/${id}`);
+            const {data} =res;
+            dispatch({type: "GET_USER_BY_ID"},{payload :data.data})
+        }catch(err){
+            console.error(err)
+        }
+    }
     
     return(
         <UserContext.Provider 

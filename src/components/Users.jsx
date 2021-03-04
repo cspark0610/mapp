@@ -7,7 +7,7 @@ import axios from 'axios';
 
 export const Users = () => {
     const {id} = useParams('/:id')
-    console.log( id );
+    //console.log( id );
 
     const [users, setUsers] = useState([])
     const getUsers =async()=>{

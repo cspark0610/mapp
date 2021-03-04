@@ -4,17 +4,6 @@ const {User, Favorites} = require('../models/index')
 
 // aca ya estoy parado en http://localhost:8080/api/favorites
 
-routerFavorites.get("/", (req, res) => {
-	Favorites.findAll({
-		include: {
-			model: User,
-			as: "owner",
-			attributes: ["email"],
-		},
-	}).then((favorites) => res.send(favorites));
-});
-
-
 
 routerFavorites.post("/", async(req, res) => {
     const { user ,title, movieId } = req.body;
@@ -34,9 +23,27 @@ routerFavorites.post("/", async(req, res) => {
     }	
 });
 
+// routerFavorites.get("/:id", async(req, res) => {
+//   //const {id} = req.params
+//   try{
+//     const favoritesByUser = await Favorites.findAll({
+//       where:{id:req.params.id},
+//       include: {
+//         model: User,
+//         as: "owner",   
+//       },
+//     })
+//     res.status(200).json(favoritesByUser)
+//   }catch(err){
+//     console.error(err)
+//   }
+	
+// });
 
 
-routerFavorites.delete('/',async(req,res)=>{
+
+
+routerFavorites.delete("/:id",async(req,res)=>{
     const {movieId , user} = req.body;
     console.log(req.body);
 
