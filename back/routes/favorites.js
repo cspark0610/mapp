@@ -4,7 +4,7 @@ const {User, Favorites} = require('../models/index')
 
 // aca ya estoy parado en http://localhost:8080/api/favorites
 
-
+//ruta para postear un favorito
 routerFavorites.post("/", async(req, res) => {
     const { user ,title, movieId } = req.body;
     console.log(req.body);
@@ -24,7 +24,7 @@ routerFavorites.post("/", async(req, res) => {
 });
 
 
-
+//ruta pra borrar el favorito de un user en particular
 routerFavorites.delete('/:id', async(req,res)=>{
   const { movieId } = req.body;
   const { id } = req.params;

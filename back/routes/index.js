@@ -36,15 +36,6 @@ router.post("/logout", (req, res) => {
 });
 
 
-// router.post('/logout', function(req, res){
-//   req.logout();
-//   res.redirect('/');
-// });
-
-// router.get("/me", isLoggedIn, (req, res) => {
-//   if (req.user) res.json(req.user)
-// })
-
 // Don´t modify this route, keep it at the bottom.
 router.use("/", function (req, res) {
   res.sendStatus(404);

@@ -34,6 +34,11 @@ export const Navbar = () => {
 					</span>
 				</Link>
 			</div>
+			<button className='btn btn-primary'>
+				<Link to='/register' style={linkStyle}>
+					Register
+				</Link>
+			</button>
 			{ user ?
 			<button className='btn btn-danger' onClick={handleLogout}>
 				LogOut
@@ -45,11 +50,7 @@ export const Navbar = () => {
 				</Link>
 			</button>
 			}
-			<button className='btn btn-primary'>
-				<Link to='/register' style={linkStyle}>
-					Register
-				</Link>
-			</button>
+			
 		</nav>
 	);
 };

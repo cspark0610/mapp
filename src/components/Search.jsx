@@ -29,17 +29,18 @@ export const Search = ( ) => {
       });
     
   };
+  const linksStyle={
+    color:"white"
+  }
 
   return (
     <>
         <div className="search-container">
-        <Link to={`/users/${user}`} style={{ color: "white" }}>	<span className='navbar-brand'>YOUR FAVORITES</span></Link>  
-        <Link to='/favorites' style={{ color: "white" }}>
-					<span className='navbar-brand'>MOVIE LIST</span>
-				</Link>
-				<Link to='/users' style={{ color: "white" }}>
-					<span className='navbar-brand'>VIEW USERS</span>
-				</Link>
+          <div className="links-container">
+          <Link to={`/users/${user}`} style={linksStyle}>	<span className='navbar-brand'>YOUR FAVORITES</span></Link>  
+          <Link to='/favorites' style={linksStyle}><span className='navbar-brand'>MOVIE LIST</span></Link>
+				  <Link to='/users' style={linksStyle}><span className='navbar-brand'>VIEW USERS</span></Link>
+          </div>
         <input
             className='search'
             type='search'
