@@ -19,6 +19,17 @@ root {
 	font-size: 1.2rem;
 	
 }
+.goback{
+	display:flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	flex-direction: row-reverse;
+	margin-top: 10px;
+	margin-right: 17px;
+	font-size: 0.9rem;
+	height: 10px;
+	
+}
 .search-container{
 	display:flex;
 	justify-content: space-between;
@@ -70,7 +81,7 @@ body {
 
 .movie img {
 	width: 100%;
-	height: 400px;
+	height: 320px;
 	object-fit: cover;
 }
 .movie-info {
@@ -78,6 +89,8 @@ body {
 	padding: 1rem;
 	align-items: center;
 	justify-content: space-between;
+	
+	
 }
 
 .movie-info h3 {
@@ -95,7 +108,7 @@ body {
 	transform: translateY(100%);
 	transition: transform 0.3s ease-in-out;
 	overflow: auto;
-	max-height: 93.5%;
+	max-height: 92%;
 	/* para que no me tape el boton de addToFavorites*/
 }
 

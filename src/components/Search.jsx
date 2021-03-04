@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Movie from './Movie';
+import { UserContext } from '../context/UserContext';
 
-export const Search = () => {
+
+export const Search = ( ) => {
+  const { user } = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+  //console.log(user);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -29,6 +33,7 @@ export const Search = () => {
   return (
     <>
         <div className="search-container">
+        <Link to={`/users/${user}`} style={{ color: "white" }}>	<span className='navbar-brand'>YOUR FAVORITES</span></Link>  
         <Link to='/favorites' style={{ color: "white" }}>
 					<span className='navbar-brand'>MOVIE LIST</span>
 				</Link>

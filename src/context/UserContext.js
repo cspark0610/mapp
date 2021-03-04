@@ -22,7 +22,7 @@ export const UserProvider = ( props )=>{
     }, [state]);
 
     const login = (id)=> {
-        console.log('soy el id del login', id);
+        //console.log('soy el id del login', id);
         dispatch({type :"LOGIN" , payload:id })
     };
 
@@ -45,7 +45,7 @@ export const UserProvider = ( props )=>{
         value={{ user: state.user, 
                  login, 
                  logout,
-                 
+                 getUserById
                }}>
             {props.children}
         </UserContext.Provider>

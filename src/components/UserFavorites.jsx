@@ -1,18 +1,26 @@
-import React from 'react';
-import {useParams} from 'react-router-dom';
+import React ,{ useContext }from 'react';
 import { useEffect, useState } from "react";
 import { UserContext } from '../context/UserContext';
+import { MovieContext } from '../context/MovieContext';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 export const UserFavorites = () => {
-    const params =useParams()
+    // user es el nro de id del usuario logueado
     const { user } = useContext(UserContext);
-   
+    const { movies } = useContext(MovieContext);
+    
+    console.log(movies);
+
+    const history = useHistory()
+    const [favorites, setFavorites] = useState([]);
+
 const getFavoritesFromUser =async(user)=>{
     try{
     const res = await axios.get(`http://localhost:8080/api/users/${user}`);
-            res.data.json
+          res.data.json
             //console.log(res.data);
-           // setUsers(res.data);
+          setFavorites(res.data);
         }catch(err){
             console.error(err)
         }
@@ -21,38 +29,50 @@ const deleteFavoriteFromUser = async(id,user) => {
     try{
         const res = await axios.delete(`http://localhost:8080/api/users/${user}`,{data:{movieId:id,user:user}});
         res.data.json
-        
+        setFavorites(res.data);
     }catch(err){
         console.error(err)
     }
 };
  
-
 useEffect(()=>{
-    getFavoritesFromUser();
-},[])
+    getFavoritesFromUser(user);
+},[]);
+const goBackHandle = () => {
+    history.goBack();
+}
+const goBackStyle = {
+    color: "white",
+    textDecoration:"none"
+}
 
     return (
         <>
+        <div className='goback'>
+            <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5>Go Back</h5></Link>
+        </div>
         	<table className='table table-dark mt-5 text-center'>
 				<thead>
 					<tr>
-						<th className='text-center'>Favorite User Movie Id</th>
-						<th className='text-center'>Favorite User Movie Title</th>
+						<th className='text-center'> User Favorite Id</th>
+						<th className='text-center'> User Favorite Title</th>
 						<th className='text-center'>Delete Favorite </th>
 					</tr>
 				</thead>
 				<tbody>
                 {/* aca voy a mapear el array de favorites que me venga por axiosGet*/}
-                { favorites.map(favorite =>(
+                { favorites.map(favorite =>{
+                    
+                return(
                 <tr key={favorite.id}>
                     <td>{favorite.id}</td>
                     <td>{favorite.title}</td>
-                    <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(movie.id, user)}>
+                    <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(movies.id, user)}>
                         Delete Favorite</button>
                     </td>
                 </tr> 
-                )) }
+                )}
+                )}
 				
 				</tbody>
 			</table>

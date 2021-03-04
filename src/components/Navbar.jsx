@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { log, success, error } from "./utils/logs";
@@ -9,7 +9,7 @@ export const Navbar = () => {
 
 	const history = useHistory();
 
-	console.log(user);
+	//console.log(user);
 
 	const handleLogout = async () => {
 		log("logout attempt...");
@@ -22,11 +22,15 @@ export const Navbar = () => {
 			error(console.error(err));
 		}
 	};
+	const linkStyle = {
+		color : "white",
+		textDecoration:"none"
+	};
 
 	return (
 		<nav className='navbar navbar-dark bg-dark'>
 			<div className='container'>
-				<Link to='/login' style={{ color: "white" }}>
+				<Link to='/login' style={linkStyle}>
 					<span className='navbar-brand'>
 						<h4> Welcome to OMDB</h4>
 					</span>
@@ -38,13 +42,13 @@ export const Navbar = () => {
 			</button>
 
 			<button className='btn btn-success' onClick={() => login()}>
-				<Link to='/login' style={{ color: "white" }}>
+				<Link to='/login' style={linkStyle}>
 					LogIn
 				</Link>
 			</button>
 
 			<button className='btn btn-primary'>
-				<Link to='/register' style={{ color: "white" }}>
+				<Link to='/register' style={linkStyle}>
 					Register
 				</Link>
 			</button>

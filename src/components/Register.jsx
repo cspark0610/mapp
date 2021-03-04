@@ -1,13 +1,12 @@
-import React,{ useContext } from 'react';
-import { useHistory, Link } from 'react-router-dom';
-import { UserContext } from '../context/UserContext';
-import { useInput } from './utils/custom-hooks'
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import { useInput } from './utils/custom-hooks';
 import axios from 'axios';
 import '../form.css';
 import { success, error } from "./utils/logs";
 
 export const Register  = () => {
-    const { user } = useContext( UserContext );
+    
     const history = useHistory();
     const email = useInput("email");
     const password = useInput("password");

@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Link, useParams } from 'react-router-dom';
+import React, { useEffect, useState, useContext } from "react";
+import { Link,  useHistory } from 'react-router-dom';
 
 import axios from 'axios';
 
-//import React from 'react'
 
 export const Users = () => {
-    const {id} = useParams('/:id')
-    //console.log( id );
 
-    const [users, setUsers] = useState([])
+    const history = useHistory();
+    const [users, setUsers] = useState([]);
+
     const getUsers =async()=>{
         try{
             const res = await axios.get("http://localhost:8080/api/users");
@@ -30,10 +29,22 @@ export const Users = () => {
     }
     useEffect(()=>{
         getUsers();
-    },[])
+    },[]);
+
+    const goBackHandle = () => {
+        history.goBack();
+    };
+   
+    const goBackStyle = {
+        color: "white",
+        textDecoration:"none"
+    }
 
     return (
 		<>
+        <div className='goback'>
+        <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5>Go Back</h5></Link>
+        </div>
 			<table className='table table-dark mt-5 text-center'>
 				<thead>
 					<tr>
@@ -47,7 +58,7 @@ export const Users = () => {
                 { users.map(user =>(
                 <tr key={user.id}>
                     <td>{user.id}</td>
-                    <td><Link to='/users/1' style={{color:'white'}}>{user.email}</Link></td>
+                    <td>{user.email}</td>
                     <td><button className="btn btn-danger" onClick={()=>deleteUser(user.id)}>
                         Delete</button>
                     </td>

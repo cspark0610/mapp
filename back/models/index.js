@@ -9,4 +9,3 @@ Favorites.belongsTo(User,{as:'owner'})
 
 module.exports = { User, Favorites };
 
-//, through:'favoriteUser'

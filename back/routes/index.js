@@ -24,7 +24,7 @@ router.post("/register", (req, res, next) => {
 })
 
 router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log('req.user',req.user);
+  //console.log('req.user',req.user);
   const user = req.user
   res.status(200).json(user)
 })

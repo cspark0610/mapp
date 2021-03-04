@@ -23,43 +23,20 @@ routerFavorites.post("/", async(req, res) => {
     }	
 });
 
-// routerFavorites.get("/:id", async(req, res) => {
-//   //const {id} = req.params
-//   try{
-//     const favoritesByUser = await Favorites.findAll({
-//       where:{id:req.params.id},
-//       include: {
-//         model: User,
-//         as: "owner",   
-//       },
-//     })
-//     res.status(200).json(favoritesByUser)
-//   }catch(err){
-//     console.error(err)
-//   }
-	
-// });
 
 
-
-
-routerFavorites.delete("/:id",async(req,res)=>{
-    const {movieId , user} = req.body;
-    console.log(req.body);
-
-    try{
+routerFavorites.delete('/:id', async(req,res)=>{
+  const { movieId, user } = req.body;
+  try{
     const userById = await User.findByPk(user)
-    const favoriteById = await Favorites.findByPk(movieId);
-    const deletedFavorite = await userById.removeFavorites(favoriteById)      
+    //const deletedFavorite = await Favorites.destroy({ where:{id:movieId} })
+    const favoritesByUser = await userById.getFavorites(userById);
+    res.send(favoritesByUser)
 
-   // console.log(deletedFavorite);
-
-     //res.json(favoritesFromUser)  
-    }catch(err){
-      console.error(err)
-    }
-   
-  })
+  }catch(err){
+    console.error(err);
+  }
+})
 
 
 

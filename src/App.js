@@ -24,10 +24,10 @@ function App() {
         <Switch>
           <Route path ="/register"> <Register/></Route>
           <Route path ="/login"> <Login/></Route>
-          <Route path ="/search"> <Search/></Route>
+          <Route path ="/search"> <Search /></Route>
           <Route path="/favorites"><Favorites /></Route>
-          <Route path="/users"><Users /></Route>
-          <Route path="/users/:id"><UserFavorites /></Route>
+          <Route exact path="/users"> <Users/> </Route>
+          <Route path="/users/:id" render={({match})=><UserFavorites id={match.params.id}/>}></Route>
           <Redirect from ="/" to="/login" /> 
         </Switch>
       </Router>

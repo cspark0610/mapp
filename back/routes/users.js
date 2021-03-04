@@ -14,8 +14,10 @@ routerUsers.get('/',(req,res)=>{
 });
 
 
+//ruta de user para traer los favorites de un user en particular
+
 routerUsers.get('/:id',async(req,res)=>{
-  const {id} = req.params
+  //const {id} = req.params
   try{
     const userById = await User.findByPk(req.params.id);
     const favoritesByUser = await userById.getFavorites(userById);
@@ -26,6 +28,7 @@ routerUsers.get('/:id',async(req,res)=>{
   }
 });
 
+//ruta para delete de un user en paricular
 
 routerUsers.delete('/:id',async(req,res)=>{
   try{
