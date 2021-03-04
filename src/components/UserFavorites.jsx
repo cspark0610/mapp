@@ -10,9 +10,9 @@ export const UserFavorites = () => {
     const { user } = useContext(UserContext);
     const { movies } = useContext(MovieContext);
     
-    console.log(movies);
+    //console.log(movies);
 
-    const history = useHistory()
+    const history = useHistory();
     const [favorites, setFavorites] = useState([]);
 
 const getFavoritesFromUser =async(user)=>{
@@ -25,9 +25,9 @@ const getFavoritesFromUser =async(user)=>{
             console.error(err)
         }
     };
-const deleteFavoriteFromUser = async(id,user) => {
+const deleteFavoriteFromUser = async(id) => {
     try{
-        const res = await axios.delete(`http://localhost:8080/api/users/${user}`,{data:{movieId:id,user:user}});
+        const res = await axios.delete(`http://localhost:8080/api/favorites/${user}`,{data:{movieId:id}});
         res.data.json
         setFavorites(res.data);
     }catch(err){
@@ -67,7 +67,7 @@ const goBackStyle = {
                 <tr key={favorite.id}>
                     <td>{favorite.id}</td>
                     <td>{favorite.title}</td>
-                    <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(movies.id, user)}>
+                    <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(favorite.id)}>
                         Delete Favorite</button>
                     </td>
                 </tr> 

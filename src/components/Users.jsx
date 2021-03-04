@@ -1,13 +1,15 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link,  useHistory } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 import axios from 'axios';
 
 
 export const Users = () => {
-
+    const { user } = useContext(UserContext)
     const history = useHistory();
     const [users, setUsers] = useState([]);
+  
 
     const getUsers =async()=>{
         try{
@@ -38,7 +40,7 @@ export const Users = () => {
     const goBackStyle = {
         color: "white",
         textDecoration:"none"
-    }
+    };
 
     return (
 		<>
@@ -55,13 +57,16 @@ export const Users = () => {
 				</thead>
 				<tbody>
                 {/* aca voy a mapear el array de users que me venga por el pedido axios	*/}
-                { users.map(user =>(
-                <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.email}</td>
-                    <td><button className="btn btn-danger" onClick={()=>deleteUser(user.id)}>
+                { users.map(u =>(
+                <tr key={u.id}>
+                    <td>{u.id}</td>
+                    <td>{u.email}</td>
+                    <td>{u.id===user
+                        ?
+                        <button className="btn btn-danger"  onClick={()=>deleteUser(u.id)}>
                         Delete</button>
-                    </td>
+                        :null
+                    }</td>
                 </tr> 
                 )) }
 				

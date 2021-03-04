@@ -26,10 +26,14 @@ routerFavorites.post("/", async(req, res) => {
 
 
 routerFavorites.delete('/:id', async(req,res)=>{
-  const { movieId, user } = req.body;
+  const { movieId } = req.body;
+  const { id } = req.params;
+  
+
   try{
-    const userById = await User.findByPk(user)
-    //const deletedFavorite = await Favorites.destroy({ where:{id:movieId} })
+    const userById = await User.findByPk(id)
+    console.log(userById);
+    const deletedFavorite = await Favorites.destroy({ where:{id:movieId} })
     const favoritesByUser = await userById.getFavorites(userById);
     res.send(favoritesByUser)
 

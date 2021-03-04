@@ -17,10 +17,8 @@ const Movie = ({ movie }) =>{
 	return(
 	
 	<div className='movie'>
-	<button id="add" className="btn btn-primary"
-	onClick={()=> addMovie( movie )}
-	disabled={invalidateButton}
-	>Add To MovieList</button>
+	<button id="add" className="btn btn-primary" onClick={()=> addMovie( movie )}
+	disabled={invalidateButton}>Add To MovieList</button>
 		
 	<img src={movie.poster_path ? IMG_API + movie.poster_path : IMG_DEFAULT} alt={movie.title} />
 		

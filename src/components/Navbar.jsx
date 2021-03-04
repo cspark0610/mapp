@@ -9,8 +9,6 @@ export const Navbar = () => {
 
 	const history = useHistory();
 
-	//console.log(user);
-
 	const handleLogout = async () => {
 		log("logout attempt...");
 		try {
@@ -36,17 +34,17 @@ export const Navbar = () => {
 					</span>
 				</Link>
 			</div>
-
+			{ user ?
 			<button className='btn btn-danger' onClick={handleLogout}>
 				LogOut
 			</button>
-
+			:
 			<button className='btn btn-success' onClick={() => login()}>
 				<Link to='/login' style={linkStyle}>
 					LogIn
 				</Link>
 			</button>
-
+			}
 			<button className='btn btn-primary'>
 				<Link to='/register' style={linkStyle}>
 					Register
