@@ -1,8 +1,9 @@
 .bg{
     background: url('https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8bW92aWVzfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60');
-    height: 100vh;
-    background-size: 70%;
-    
+    height: 90vh;
+    width: 100%;
+    background-size: 80%;
+   
 }
 
 
