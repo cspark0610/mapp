@@ -2,7 +2,6 @@ const express = require("express");
 const helmet = require("helmet");
 const http = require("http");
 const bodyParser = require("body-parser");
-const path = require("path");
 const app = express();
 const db = require("./config/db");
 const session = require("express-session");

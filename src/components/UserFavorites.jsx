@@ -3,7 +3,10 @@ import { useEffect, useState } from "react";
 import { UserContext } from '../context/UserContext';
 import { MovieContext } from '../context/MovieContext';
 import { Link, useHistory } from 'react-router-dom';
+import { RiArrowGoBackFill } from "@react-icons/all-files/ri/RiArrowGoBackFill";
+import { BsFillTrashFill } from "react-icons/bs";
 import axios from 'axios';
+
 
 export const UserFavorites = () => {
     // user es el nro de id del usuario logueado
@@ -49,14 +52,14 @@ const goBackStyle = {
     return (
         <>
         <div className='goback'>
-            <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5>Go Back</h5></Link>
+            <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5><RiArrowGoBackFill/> Go Back</h5></Link>
         </div>
         	<table className='table table-dark mt-5 text-center'>
 				<thead>
 					<tr>
 						<th className='text-center'> User Favorite Id</th>
 						<th className='text-center'> User Favorite Title</th>
-						<th className='text-center'>Delete Favorite </th>
+						<th className='text-center'> Delete Favorite </th>
 					</tr>
 				</thead>
 				<tbody>
@@ -68,7 +71,7 @@ const goBackStyle = {
                     <td>{favorite.id}</td>
                     <td>{favorite.title}</td>
                     <td><button className="btn btn-danger" onClick={()=>deleteFavoriteFromUser(favorite.id)}>
-                        Delete Favorite</button>
+                    <BsFillTrashFill/> Delete Favorite</button>
                     </td>
                 </tr> 
                 )}

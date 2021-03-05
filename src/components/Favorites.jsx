@@ -2,8 +2,12 @@
 import { MovieContext } from "../context/MovieContext";
 import { UserContext } from "../context/UserContext";
 import React ,{useContext, useEffect, useState} from 'react';
+import { useHistory, Link } from 'react-router-dom';
+import { RiArrowGoBackFill } from "@react-icons/all-files/ri/RiArrowGoBackFill";
+import { BsPlusSquare, BsXSquare } from "react-icons/bs";
+
 import axios from 'axios';
-import { useHistory, Link } from 'react-router-dom'
+
 
 export const Favorites = () => {
     const { movies, cancelMovie } = useContext(MovieContext)
@@ -36,7 +40,7 @@ export const Favorites = () => {
 	return (
 		<>
         <div className='goback'>
-        <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5>Go Back</h5></Link>
+        <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5><RiArrowGoBackFill/> Go Back</h5></Link>
         </div>
         	<table className='table table-dark mt-5 text-center'>
 				<thead>
@@ -57,10 +61,10 @@ export const Favorites = () => {
                     <td>{movie.id}</td>
                     <td>{movie.title}</td>
 					<td><button className="btn btn-success" onClick={()=>postFavorites(movie.id,movie.title,user )}>
-                        Add Favorite</button>
+                    <BsPlusSquare/>  Add Favorite</button>
                     </td>
                     <td><button className="btn btn-danger" onClick={()=>cancelMovie(movie.id)}>
-                        Cancel Movie</button>
+                    <BsXSquare/>  Cancel Movie</button>
                     </td>
                 </tr> 
                 )}

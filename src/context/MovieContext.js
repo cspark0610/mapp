@@ -15,7 +15,7 @@ const initialState = {
 // create context
 export const MovieContext = createContext(initialState);
 
-// provider components
+// MovieProvider component
 export const MovieProvider = (props) => {
   const [state, dispatch] = useReducer(MovieReducer, initialState);
 

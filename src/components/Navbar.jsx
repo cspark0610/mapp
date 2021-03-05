@@ -2,6 +2,9 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../context/UserContext";
 import { log, success, error } from "./utils/logs";
+import { BiCameraMovie } from "@react-icons/all-files/bi/BiCameraMovie";
+
+
 import axios from "axios";
 
 export const Navbar = () => {
@@ -26,11 +29,13 @@ export const Navbar = () => {
 	};
 
 	return (
+	<>
+	
 		<nav className='navbar navbar-dark bg-dark'>
 			<div className='container'>
 				<Link to='/login' style={linkStyle}>
 					<span className='navbar-brand'>
-						<h4> Welcome to OMDB</h4>
+						<h4><BiCameraMovie /> Welcome to OMDB</h4>
 					</span>
 				</Link>
 			</div>
@@ -52,5 +57,6 @@ export const Navbar = () => {
 			}
 			
 		</nav>
+	</>
 	);
 };

@@ -1,7 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Link,  useHistory } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
-
+import { RiArrowGoBackFill } from "@react-icons/all-files/ri/RiArrowGoBackFill";
+import { BsFillTrashFill } from "react-icons/bs";
 import axios from 'axios';
 
 
@@ -45,7 +46,7 @@ export const Users = () => {
     return (
 		<>
         <div className='goback'>
-        <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5>Go Back</h5></Link>
+        <Link to="*" onClick={goBackHandle} style={goBackStyle}><h5><RiArrowGoBackFill/> Go Back</h5></Link>
         </div>
 			<table className='table table-dark mt-5 text-center'>
 				<thead>
@@ -64,7 +65,7 @@ export const Users = () => {
                     <td>{u.id===user
                         ?
                         <button className="btn btn-danger"  onClick={()=>deleteUser(u.id)}>
-                        Delete</button>
+                        <BsFillTrashFill/> Delete Your User</button>
                         :null
                     }</td>
                 </tr> 

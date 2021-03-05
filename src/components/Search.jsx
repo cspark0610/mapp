@@ -2,13 +2,15 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Movie from './Movie';
 import { UserContext } from '../context/UserContext';
+import { MdMovieFilter } from "@react-icons/all-files/md/MdMovieFilter";
+import { FiUsers } from "@react-icons/all-files/fi/FiUsers";
+import { SiThemoviedatabase } from "@react-icons/all-files/si/SiThemoviedatabase";
 
 
 export const Search = ( ) => {
   const { user } = useContext(UserContext);
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  //console.log(user);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -36,11 +38,11 @@ export const Search = ( ) => {
   return (
     <>
         <div className="search-container">
-          <div className="links-container">
-          <Link to={`/users/${user}`} style={linksStyle}>	<span className='navbar-brand'>YOUR FAVORITES</span></Link>  
-          <Link to='/favorites' style={linksStyle}><span className='navbar-brand'>MOVIE LIST</span></Link>
-				  <Link to='/users' style={linksStyle}><span className='navbar-brand'>VIEW USERS</span></Link>
-          </div>
+            <div className="links-container">
+              <Link to={`/users/${user}`} style={linksStyle}>	<span className='navbar-brand'><SiThemoviedatabase/>YOUR FAVORITES</span></Link>  
+              <Link to='/favorites' style={linksStyle}><span className='navbar-brand'> <MdMovieFilter/>MOVIE LIST</span></Link>
+              <Link to='/users' style={linksStyle}><span className='navbar-brand'><FiUsers/>VIEW USERS</span></Link>
+            </div>
         <input
             className='search'
             type='search'
